@@ -8,7 +8,7 @@ class MyTestCase(unittest.TestCase):
         self.data_false = 'abcde'
         self.data_false_reversed = 'edcba'
         self.data_true_1 = '1abcba1'
-        self.data_true_2 = 'abcbab'
+        self.data_true_2 = 'abcbabe'
 
     def test_reverse_string(self):
         self.assertEqual(p.reverse_string(self.data_false), self.data_false_reversed)
