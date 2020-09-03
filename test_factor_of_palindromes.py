@@ -1,4 +1,4 @@
-import unittest
+import unittest, timeit
 import factor_of_palindromes as p
 
 
@@ -21,10 +21,5 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(p.find_palindrome(self.data_true_1), 'bcb')
         self.assertEqual(p.find_palindrome(self.data_true_2), 'bab')
 
-    '''
-    def test_something(self):
-        self.assertEqual(True, False)
-
-'''
 if __name__ == '__main__':
     unittest.main()

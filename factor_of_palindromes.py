@@ -1,11 +1,11 @@
-def read_file():
-    with open('input.txt') as input_file:
+def read_file(file='input.txt'):
+    with open(file) as input_file:
         string = input_file.readline()
     return string
 
 
-def write_file(min_palindrome):
-    with open('output.txt', 'w') as output_file:
+def write_file(min_palindrome, file='output.txt'):
+    with open(file, 'w') as output_file:
         output_file.write(min_palindrome)
     return
 
