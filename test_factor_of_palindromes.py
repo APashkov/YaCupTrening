@@ -9,6 +9,7 @@ class MyTestCase(unittest.TestCase):
         self.data_false_reversed = 'edcba'
         self.data_true_1 = '1abcba1'
         self.data_true_2 = 'abcbabe'
+        self.data_file = p.read_file()
 
     def test_reverse_string(self):
         self.assertEqual(p.reverse_string(self.data_false), self.data_false_reversed)
@@ -20,6 +21,10 @@ class MyTestCase(unittest.TestCase):
     def test_find_palindrome(self):
         self.assertEqual(p.find_palindrome(self.data_true_1), 'bcb')
         self.assertEqual(p.find_palindrome(self.data_true_2), 'bab')
+
+    def test_time(self):
+        print(f'def find_palindrome time: {timeit.timeit(stmt=p.find_palindrome(self.data_file))}')
+
 
 if __name__ == '__main__':
     unittest.main()

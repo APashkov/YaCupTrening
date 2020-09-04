@@ -15,9 +15,7 @@ def reverse_string(string):
 
 
 def check_palindrome(string):
-    reverse = reverse_string(string)
-    palindrome = (string == reverse)
-    return palindrome
+    return string == string[::-1]
 
 
 def find_palindrome(string):
@@ -35,6 +33,8 @@ def find_palindrome(string):
         if list_palindromes:
             min_palindrome = min(list_palindromes)
             break
+        else:
+            min_palindrome = '-1'
 
     return min_palindrome
 
