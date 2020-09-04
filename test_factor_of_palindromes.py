@@ -11,9 +11,6 @@ class MyTestCase(unittest.TestCase):
         self.data_true_2 = 'abcbabe'
         self.data_file = p.read_file()
 
-    def test_reverse_string(self):
-        self.assertEqual(p.reverse_string(self.data_false), self.data_false_reversed)
-
     def test_check_palindrome(self):
         self.assertTrue(p.check_palindrome(self.data_true_1))
         self.assertFalse(p.check_palindrome(self.data_false))

@@ -9,11 +9,6 @@ def write_file(min_palindrome, file='output.txt'):
         output_file.write(min_palindrome)
     return
 
-
-def reverse_string(string):
-    return string[::-1]
-
-
 def check_palindrome(string):
     return string == string[::-1]
 
@@ -21,7 +16,7 @@ def check_palindrome(string):
 def find_palindrome(string):
     len_string = len(string) + 1
 
-    for len_sub_string in range(2, len_string):
+    for len_sub_string in range(2, 4):
 
         list_palindromes = list()
         for begin_sub_string in range(0, len_string - len_sub_string):
