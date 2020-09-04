@@ -1,12 +1,12 @@
 import unittest, timeit
 import factor_of_palindromes as p
+from memory_profiler import profile
 
 
 class MyTestCase(unittest.TestCase):
 
     def setUp(self):
         self.data_false = 'abcde'
-        self.data_false_reversed = 'edcba'
         self.data_true_1 = '1abcba1'
         self.data_true_2 = 'abcbabe'
         self.data_file = p.read_file()
@@ -22,6 +22,12 @@ class MyTestCase(unittest.TestCase):
     def test_time(self):
         print(f'def find_palindrome time: {timeit.timeit(stmt=p.find_palindrome(self.data_file))}')
 
+    @profile
+    def test_memory(self):
+        p.read_file()
+        p.write_file(self.data_file)
+        p.check_palindrome(self.data_file)
+        p.find_palindrome(self.data_file)
 
 if __name__ == '__main__':
     unittest.main()
