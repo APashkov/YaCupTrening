@@ -21,6 +21,8 @@ class MyTestCase(unittest.TestCase):
 
     def test_time(self):
         print(f'def find_palindrome time: {timeit.timeit(stmt=p.find_palindrome(self.data_file))}')
+        print(f'def write_file time: {timeit.timeit(stmt=str(p.write_file(self.data_file)))}')
+        print(f'factor_of_palindromes time: {timeit.timeit(stmt=str(p.write_file(p.find_palindrome(p.read_file()))))}')
 
     @profile
     def test_memory(self):
