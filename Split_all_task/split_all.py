@@ -43,8 +43,13 @@ def straight_line(point_1, point_2):
     y1 = point_1[1]
     x2 = point_2[0]
     y2 = point_2[1]
-    k = (y1 - y2) / (x1 - x2)
-    b = y2 - (k * x2)
+    if x1 == x2:
+        k = '~'
+        b = -x2
+    else:
+        k = (y1 - y2) / (x1 - x2)
+        b = y2 - (k * x2)
+
     return [k, b]
 
 
@@ -65,13 +70,25 @@ def point_on_the_straight_line(number_points, center_points):
     return result
 
 
-if __name__ == '__main__':
-    count_points, data = read_file()
+def begin(data_file_input):
+    count_points, data = read_file(data_file_input)
     if count_points <= 1:
         contains = 'Yes'
     else:
         points = find_center(data)
         contains = point_on_the_straight_line(count_points, points)
 
-    print(contains)
     write_file(contains)
+
+
+if __name__ == '__main__':
+    begin('input.txt')
+    '''count_points, data = read_file()
+    if count_points <= 1:
+        contains = 'Yes'
+    else:
+        points = find_center(data)
+        contains = point_on_the_straight_line(count_points, points)
+    
+    print(contains)
+    write_file(contains)'''

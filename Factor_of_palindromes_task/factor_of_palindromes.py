@@ -9,6 +9,7 @@ def write_file(min_palindrome, file='output.txt'):
         output_file.write(min_palindrome)
     return
 
+
 def check_palindrome(string):
     return string == string[::-1]
 
