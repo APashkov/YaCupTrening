@@ -1,5 +1,5 @@
 import unittest, timeit
-import factor_of_palindromes as p
+from Factor_of_palindromes_task import factor_of_palindromes as p
 from memory_profiler import profile
 
 
@@ -30,6 +30,7 @@ class MyTestCase(unittest.TestCase):
         p.write_file(self.data_file)
         p.check_palindrome(self.data_file)
         p.find_palindrome(self.data_file)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,5 +1,5 @@
 import string
-import factor_of_palindromes as p
+from Factor_of_palindromes_task import factor_of_palindromes as p
 
 alphabet = string.ascii_lowercase
 print(200000/26)
