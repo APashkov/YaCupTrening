@@ -2,7 +2,6 @@ def read_file(file='input.txt'):
     with open(file) as input_file:
         first_line = int(input_file.readline())
         input_data = input_file.readlines()
-        print(input_data)
     return first_line, input_data
 
 
