@@ -11,31 +11,29 @@ def func_new_string(string):
     return new_string
 
 
-def cycle(nn):
-    a = '11'
-    for _ in range(nn - 1):
-        a = func_new_string(a)
-    return a
+def cycle(n_cycle):
+    n1 = '11'
+    for _ in range(n_cycle - 1):
+        n1 = func_new_string(n1)
+    return n1
 
 
-def recursion(n, aa):
-    if n == 1:
-        return aa
-    n -= 1
-    aa = func_new_string(aa)
-    return recursion(n, aa)
+def recursion(n_recursion, string_for_insert):
+    if n_recursion == 1:
+        return string_for_insert
+    n_recursion -= 1
+    string_for_insert = func_new_string(string_for_insert)
+    return recursion(n_recursion, string_for_insert)
 
 
-def count_n(nnn):
-    qqq = recursion(nnn, '11')
-    count = qqq.count(str(nnn))
-    return count
+def count_n(n_count):
+    return recursion(n_count, '11').count(str(n_count))
 
 
 if __name__ == '__main__':
     s_data = '11'
-    #print(f'recursion   = {recursion(4, s_data)}')
-    #data = '13231'
-    #print(f'func = {func_new_string(data)}')
-    #print(f'aaa         = {aaa(4)}')
-    print(f'count_n     = {count_n(100)}')
+    print(f'recursion   = {recursion(4, s_data)}')
+    data = '13231'
+    print(f'func        = {func_new_string(data)}')
+    print(f'cycle       = {cycle(4)}')
+    print(f'count_n = {count_n(4)}')
