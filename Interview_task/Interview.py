@@ -38,4 +38,4 @@ if __name__ == '__main__':
     #data = '13231'
     #print(f'func = {func_new_string(data)}')
     #print(f'aaa         = {aaa(4)}')
-    print(f'count_n     = {count_n(20)}')
+    print(f'count_n     = {count_n(100)}')
