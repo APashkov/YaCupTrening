@@ -12,23 +12,22 @@ def write_file(answer, file='output.txt'):
 
 
 def find_center(data_list):
-    points_list = list()
+    points_set = set()
     for line in data_list:
-        line = list(map(int, line.split()))
+        line = tuple(map(int, line.split()))
 
-        if line[0] == 0:
-            point = [line[2], line[3]]
-        elif line[0] == 1:
-            point = center_square(line[1:])
-
-        points_list.append(point)
-    return points_list
-
-
-def center_square(square_points):
-    x = sum(square_points[::2]) / 4
-    y = sum(square_points[1::2]) / 4
-    return [x, y]
+        line_0 = line[0]
+        if line_0 == 0:
+            point = (line[2], line[3])
+        elif line_0 == 1:
+            x_1, y_1, x_2, y_2, x_3, y_3, x_4, y_4 = line[1:]
+            x = int((x_1 + x_2 + x_3 + x_4) / 4)
+            y = int((y_1 + y_2 + y_3 + y_4) / 4)
+            '''x = int(sum(line[::2]) / 4)
+            y = int(sum(line[1::2]) / 4)'''
+            point = (x, y)
+        points_set.add(point)
+    return list(points_set)
 
 
 def straight_line(point_1, point_2):
@@ -53,15 +52,13 @@ def straight_line(point_1, point_2):
     return [k, b]
 
 
-def point_on_the_straight_line(number_points, center_points):
+def point_on_the_straight_line(center_points):
     point_1 = center_points[0]
     point_2 = center_points[1]
     k, b = straight_line(point_1, point_2)
 
-    for number in range(1, number_points - 1):
-        point_first = center_points[number]
-        point_second = center_points[number + 1]
-        ki, bi = straight_line(point_first, point_second)
+    for point_next in center_points[2:]:
+        ki, bi = straight_line(point_1, point_next)
         if (k == ki) and (b == bi):
             result = 'Yes'
         else:
@@ -76,19 +73,11 @@ def begin(data_file_input):
         contains = 'Yes'
     else:
         points = find_center(data)
-        contains = point_on_the_straight_line(count_points, points)
+        contains = point_on_the_straight_line(points)
 
     write_file(contains)
 
 
 if __name__ == '__main__':
     begin('input.txt')
-    '''count_points, data = read_file()
-    if count_points <= 1:
-        contains = 'Yes'
-    else:
-        points = find_center(data)
-        contains = point_on_the_straight_line(count_points, points)
-    
-    print(contains)
-    write_file(contains)'''
+
