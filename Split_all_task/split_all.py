@@ -20,8 +20,8 @@ def find_center(data_list):
         if line_0 == 0:
             point = (line[2], line[3])
         elif line_0 == 1:
-            x = int(sum(line[::2]) / 4)
-            y = int(sum(line[1::2]) / 4)
+            x = int(sum(line[1::2]) / 4)
+            y = int(sum(line[2::2]) / 4)
             point = (x, y)
         points_set.add(point)
     return tuple(points_set)
@@ -56,12 +56,9 @@ def point_on_the_straight_line(center_points):
 
     for point_next in center_points[2:]:
         ki, bi = straight_line(point_1, point_next)
-        if (k == ki) and (b == bi):
-            result = 'Yes'
-        else:
-            result = 'No'
-            break
-    return result
+        if (k != ki) or (b != bi):
+            return 'No'
+    return 'Yes'
 
 
 def begin(data_file_input):
@@ -70,7 +67,7 @@ def begin(data_file_input):
         contains = 'Yes'
     else:
         points = find_center(data)
-        if len(points) == 1:
+        if len(points) <= 2:
             contains = 'Yes'
         else:
             contains = point_on_the_straight_line(points)

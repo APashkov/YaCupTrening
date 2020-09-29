@@ -39,6 +39,11 @@ class MyTestCase(unittest.TestCase):
             (3, 2)
         ]
 
+        self.data_two_points_string_centers = [
+            (1, 1),
+            (2, 2)
+        ]
+
     '''def test_center_square(self):
         self.assertEqual(s.center_square(self.data_square_1), self.data_point_2)
         self.assertEqual(s.center_square(self.data_square_3), self.data_point_3)'''
@@ -53,6 +58,7 @@ class MyTestCase(unittest.TestCase):
     def test_point_on_the_straight_line(self):
         self.assertEqual(s.point_on_the_straight_line(self.data_points_string_centers), 'Yes')
         self.assertEqual(s.point_on_the_straight_line(self.data_points_centers_false), 'No')
+        self.assertEqual(s.point_on_the_straight_line(self.data_two_points_string_centers), 'Yes')
 
     def test_begin(self):
         self.assertEqual(s.begin(self.data_one_point_name), 'Yes')
