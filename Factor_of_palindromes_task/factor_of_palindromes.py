@@ -21,6 +21,7 @@ def find_palindrome(string):
 
         list_palindromes = list()
         for begin_sub_string in range(0, len_string - len_sub_string):
+
             sub_string = string[begin_sub_string:begin_sub_string + len_sub_string]
 
             if check_palindrome(sub_string):

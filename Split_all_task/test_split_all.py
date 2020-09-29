@@ -8,6 +8,8 @@ class MyTestCase(unittest.TestCase):
         self.data_circle_name = 'input_circle.txt'
         self.data_square_name = 'input_square.txt'
         self.data_mesh_name = 'input_mesh.txt'
+        self.data_one_point_name = 'input_one_point.txt'
+        self.data_one_center_name = 'input_one_center.txt'
         self.data_file = s.read_file('input.txt')
         self.data_file_circle = s.read_file(self.data_circle_name)
         self.data_file_square = s.read_file(self.data_square_name)
@@ -15,6 +17,8 @@ class MyTestCase(unittest.TestCase):
         self.data_circle = [0, 1, 1, 1]
         self.data_square_1 = [1, 1, 1, 3, 3, 3, 3, 1]
         self.data_square_3 = [0, 0, 4, 4, 8, 0, 4, -4]
+        self.data_center = (0, 0)
+        self.data_point_0 = 0
         self.data_point_1 = [1, 1]
         self.data_point_2 = (2, 2)
         self.data_point_3 = (4, 0)
@@ -49,6 +53,10 @@ class MyTestCase(unittest.TestCase):
     def test_point_on_the_straight_line(self):
         self.assertEqual(s.point_on_the_straight_line(self.data_points_string_centers), 'Yes')
         self.assertEqual(s.point_on_the_straight_line(self.data_points_centers_false), 'No')
+
+    def test_begin(self):
+        self.assertEqual(s.begin(self.data_one_point_name), 'Yes')
+        self.assertEqual(s.begin(self.data_one_center_name), 'Yes')
 
     def test_time(self):
         func_circle = 's.begin(\'input_circle.txt\')'

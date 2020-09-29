@@ -20,13 +20,20 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(p.find_palindrome(self.data_true_2), 'bab')
 
     def test_time(self):
-        print(f'def find_palindrome time: {timeit.timeit(stmt=p.find_palindrome(self.data_file))}')
-        print(f'def write_file time: {timeit.timeit(stmt=str(p.write_file(self.data_file)))}')
-        print(f'factor_of_palindromes time: {timeit.timeit(stmt=str(p.write_file(p.find_palindrome(p.read_file()))))}')
+        func_find_palindrome = f'p.find_palindrome(p.read_file())'
+        print(f'def find_palindrome time: '
+              f'{timeit.timeit(stmt=func_find_palindrome, number=1, globals=globals())}')
+
+        func_write_file = f'p.write_file(p.read_file())'
+        print(f'def write_file time: '
+              f'{timeit.timeit(stmt=func_write_file, number=1, globals=globals())}')
+
+        func_full = f'p.write_file(p.find_palindrome(p.read_file()))'
+        print(f'factor_of_palindromes time: '
+              f'{timeit.timeit(stmt=func_full, number=1, globals=globals())}')
 
     @profile
     def test_memory(self):
-        p.read_file()
         p.write_file(self.data_file)
         p.check_palindrome(self.data_file)
         p.find_palindrome(self.data_file)

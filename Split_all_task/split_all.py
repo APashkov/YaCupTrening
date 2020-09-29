@@ -1,7 +1,7 @@
 def read_file(file='input.txt'):
     with open(file) as input_file:
         first_line = int(input_file.readline())
-        input_data = input_file.readlines()
+        input_data = set(input_file.readlines())
     return first_line, input_data
 
 
@@ -20,14 +20,11 @@ def find_center(data_list):
         if line_0 == 0:
             point = (line[2], line[3])
         elif line_0 == 1:
-            x_1, y_1, x_2, y_2, x_3, y_3, x_4, y_4 = line[1:]
-            x = int((x_1 + x_2 + x_3 + x_4) / 4)
-            y = int((y_1 + y_2 + y_3 + y_4) / 4)
-            '''x = int(sum(line[::2]) / 4)
-            y = int(sum(line[1::2]) / 4)'''
+            x = int(sum(line[::2]) / 4)
+            y = int(sum(line[1::2]) / 4)
             point = (x, y)
         points_set.add(point)
-    return list(points_set)
+    return tuple(points_set)
 
 
 def straight_line(point_1, point_2):
@@ -69,13 +66,17 @@ def point_on_the_straight_line(center_points):
 
 def begin(data_file_input):
     count_points, data = read_file(data_file_input)
-    if count_points <= 1:
+    if count_points == 1:
         contains = 'Yes'
     else:
         points = find_center(data)
-        contains = point_on_the_straight_line(points)
+        if len(points) == 1:
+            contains = 'Yes'
+        else:
+            contains = point_on_the_straight_line(points)
 
     write_file(contains)
+    return contains
 
 
 if __name__ == '__main__':
